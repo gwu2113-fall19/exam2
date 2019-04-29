@@ -20,6 +20,7 @@ public class EmailClient {
 
 	/**
 	 * Asks the user to enter a number.  Returns the value entered.
+	 * Don't change this code.
 	 *
 	 * Sample use:
 	 *   int selectedMsg = enterNnumber();
@@ -44,7 +45,7 @@ public class EmailClient {
 	public EmailClient() {
 
 		String host = "127.0.0.1"; // local host
-		int portnum = 4444; // modify port based on the assignment in class
+		int portnum = 4444;
 
 		Socket sock;
 		try {
@@ -58,6 +59,29 @@ public class EmailClient {
 
 
 			// YOUR CODE HERE!
+
+			out.writeUTF("tim:secret");
+			int numMsgs;
+			numMsgs = in.readInt();
+			System.out.println("I have " + numMsgs + " messages.");
+
+			for(int i = 0; i < numMsgs; i++ ) {
+				String subject;
+				String sender;
+
+				sender = in.readUTF();
+				subject = in.readUTF();
+				System.out.println( i + " " + sender + " " + subject);
+			}
+
+			int m = enterNumber();
+			System.out.println("Getting message number " + m + ".");
+
+			out.writeInt(m); // send the mesesage number we want
+
+			String message = in.readUTF(); // read in the actual message
+
+			System.out.println(message);
 
 
 			// clean up

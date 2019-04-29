@@ -12,7 +12,7 @@ package samples.threads;
  */
 public class SimpleJob implements Runnable {
 	// to be used by a thread, must "implement Runnable"
-
+	
 	private int sleep;
 
 	public SimpleJob(int sleep) {
@@ -26,7 +26,11 @@ public class SimpleJob implements Runnable {
 			try {
 				Thread.sleep(sleep);
 				System.out.println(Thread.currentThread().getName() + " finished sleep number " + i);
-			} catch (InterruptedException e) {e.printStackTrace(); }
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
+		ThreadSample.finishMsg();
 	}
+
 }

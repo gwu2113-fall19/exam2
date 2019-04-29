@@ -9,7 +9,7 @@ package factor;
  *
  */
 
-public class FactorJob  {
+public class FactorJob implements Runnable {
 
 	int iterations;
 
